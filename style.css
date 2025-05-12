@@ -1,7 +1,7 @@
 html, body {
-  height: 100%; /* ทำให้ html และ body ครอบคลุมเต็มหน้าจอ */
-  margin: 0; /* ลบ margin ที่อาจทำให้เกิดการเลื่อน */
-  overflow: hidden; /* ปิดการเลื่อน */
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
 body {
@@ -70,10 +70,12 @@ body::before {
     transform: translate(calc(100vw - 100px), calc(100vh - 115px)) rotate(360deg);
   }
 }
+
 .top-btn {
   text-align: center;
   margin: 20px 0;
 }
+
 .top-btn button {
   background: #0066ff;
   color: white;
@@ -85,32 +87,10 @@ body::before {
   font-size: 14px;
 }
 
-
 .heading {
   text-align: center;
   font-size: 1.6rem;
-  margin: 15px auto; /* centered with auto margins */
-  padding: 12px 30px;
-  border: none; /* removed solid border */
-  border-radius: 50px; /* pill shape */
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  color: #333;
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 1px 3px rgba(255, 255, 255, 0.8);
-  font-weight: 600; /* semi-bold */
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.heading {
-  text-align: center;
-  font-size: 1.6rem;
-  margin: 15px auto; /* This auto margin centers the element */
+  margin: 15px auto;
   padding: 12px 30px;
   border: none;
   border-radius: 50px;
@@ -123,13 +103,12 @@ body::before {
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
-  display: block; /* Changed to block for proper centering */
-  width: fit-content; /* Makes the width fit the content */
+  display: block;
+  width: fit-content;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
-/* The rest of your styles remain the same */
 .heading::after {
   content: '';
   position: absolute;
@@ -184,36 +163,35 @@ body::before {
 }
 
 .card:hover {
-  transform: scale(1.15); /* เดิม 1.2 */
+  transform: scale(1.15);
 }
 
 .card img {
-  width: 180px;          /* เดิม 150px */
-  height: 180px;         /* เดิม 150px */
-  border-radius: 20px;   /* เดิม 15px */
-  margin-bottom: 16px;   /* เดิม 12px */
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  margin-bottom: 16px;
 }
 
 .card h3 {
-  font-size: 1.6rem;     /* เดิม 1.4rem */
+  font-size: 1.6rem;
 }
 
 .card span {
-  font-size: 1.1rem;     /* เดิม 1rem */
+  font-size: 1.1rem;
 }
 
 .tags span {
-  font-size: 0.85rem;    /* เดิม 0.75rem */
-  padding: 6px 12px;     /* ใหญ่ขึ้น */
+  font-size: 0.85rem;
+  padding: 6px 12px;
 }
-
 
 .swiper-pagination-bullet-active {
   background: white;
 }
 
 .swiper-slide-active .card {
-  transform: scale(1.4); /* ขยายเมื่อสไลด์เป็น active */
+  transform: scale(1.4);
   transition: transform 0.4s ease;
   z-index: 10;
 }
