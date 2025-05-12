@@ -10,13 +10,19 @@ const swiper = new Swiper(".mySwiper", {
     stretch: 0,
     depth: 100,
     modifier: 1,
-    //slideShadows: true,
   },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
   },
+  on: {
+    slideChangeTransitionEnd: () => { // ใช้ slideChangeTransitionEnd แทน slideChange
+      const audio = new Audio('mac-quack.mp3'); // ระบุไฟล์เสียงที่ต้องการ
+      audio.play(); // เล่นเสียงเมื่อเลื่อนรูปเสร็จสมบูรณ์
+    }
+  }
 });
+
 for (let i = 0; i < 10; i++) {
   const hexagon = document.createElement('div');
   hexagon.classList.add('hexagon');
