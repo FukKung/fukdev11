@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ติดต่อเรา</title>
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <h2 class="heading">ทีมแมงเม่า</h2>
+
+  <div class="container">
+    <h1>ช่องทางการติดต่อ</h1>
+
+    <!-- contact cards -->
+    <div class="contact-list" id="contactList">
+      <!-- ใส่ข้อมูลแบบ dynamic ที่นี่ -->
+    </div>
+
+    <!-- ปุ่มย้อนกลับ (อยู่นอก contact-list เพื่อไม่ให้ซ้อน) -->
+    <div class="center-bar">
+      <a href="index.html" class="back-button">ย้อนกลับ</a>
+    </div>
+  </div>
+
+  <footer>
+    <script>
+  const members = {
+    1: {
+      name: "FukKung",
+      instagram: "https://www.instagram.com/fuk.kung.56",
+      facebook: "https://www.facebook.com/fuk.kung.94",
+      github: "https://github.com/FukKung",
+      discord: null
+    },
+    2: {
+      name: "บังตี้กินส้มบักม่วง",
+      instagram: "https://www.instagram.com/wonra_wat/",
+      facebook: "https://www.facebook.com/bang.ti.983021",
+      github: null,
+      discord: null
+    },
+    3: {
+      name: "โตโต้ ศรัณยูหมูกระทะ",
+      instagram: "https://www.instagram.com/txtxpz_/",
+      facebook: "https://www.facebook.com/toto.sarunyu.9",
+      github: null,
+      discord: null
+    },
+    4: {
+      name: "ร็อคกี้ คนกลัวเมีย",
+      instagram: "https://www.instagram.com/_rawinan/",
+      facebook: "https://www.facebook.com/rawinan.phaprang.2024",
+      github: null,
+      discord: null
+    },
+    5: {
+      name: "ฟ.ฟิว หนุ่มหน้ามนคนหน้า....",
+      instagram: "https://www.instagram.com/fiw.ntc/",
+      facebook: "https://www.facebook.com/fiw.ntc",
+      github: null,
+      discord: null
+    },
+    6: {
+      name: "จารเบียร์คนเดิม เพิ่มเติมทีหลัง",
+      instagram: "https://www.instagram.com/b_exrzxi09/",
+      facebook: "https://www.facebook.com/phuriphat.khocthan",
+      github: null,
+      discord: null
+    },
+    7: {
+      name: "สิงห์เฟชรคนเดิมเหมือนเดิมนั่นแหละ",
+      instagram: "https://www.instagram.com/worapat_.24/",
+      facebook: "https://www.facebook.com/worapat.vi.run",
+      github: null,
+      discord: null
+    },
+    8: {
+      name: "จารทิวสุดหล่อ",
+      instagram: "https://www.instagram.com/thp.pk/",
+      facebook: "https://www.facebook.com/thanaphat.payakkakul/",
+      github: "https://github.com/Unpraised0",
+      discord: null
+    },
+    9: {
+      name: "จารเฟชร จักรยุไส",
+      instagram: "https://www.instagram.com/chakirch2549/",
+      facebook: "https://www.facebook.com/cakr.krich.115424",
+      github: null,
+      discord: null
+    }
+  };
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get('id');
+  const contactList = document.getElementById("contactList");
+  const member = members[id];
+
+  const links = [
+    {
+      key: "instagram",
+      label: "Instagram",
+      icon: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+    },
+    {
+      key: "facebook",
+      label: "Facebook",
+      icon: "https://cdn-icons-png.flaticon.com/512/733/733547.png"
+    },
+    {
+      key: "github",
+      label: "GitHub",
+      icon: "https://cdn-icons-png.flaticon.com/512/733/733553.png"
+    },
+    {
+      key: "discord",
+      label: "Discord",
+      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968756.png"
+    }
+  ];
+
+  if (!member) {
+    contactList.innerHTML = "<p>ไม่พบสมาชิกในระบบ</p>";
+  } else {
+    links.forEach(link => {
+      const value = member[link.key];
+      const label = value
+        ? (link.key === "instagram" ? new URL(value).pathname.replace(/\//g, '') : member.name)
+        : "ยังไม่เชื่อมต่อ";
+
+      const href = value ? value : "#";
+      const extraAttr = value ? "" : `id="${link.key}Link"`;
+
+      contactList.innerHTML += `
+        <a href="${href}" target="_blank" class="contact-card ${link.key}" ${extraAttr}>
+          <img src="${link.icon}" alt="${link.label}">
+          <span>${label}</span>
+        </a>
+      `;
+    });
+
+    // เพิ่ม alert สำหรับทุกปุ่มที่ไม่ได้เชื่อมต่อ
+    links.forEach(link => {
+      if (!member[link.key]) {
+        setTimeout(() => {
+          const el = document.getElementById(`${link.key}Link`);
+          if (el) {
+            el.addEventListener("click", function (e) {
+              e.preventDefault();
+              alert(`${link.label} ยังไม่ได้เชื่อมต่อ`);
+            });
+          }
+        }, 100);
+      }
+    });
+  }
+</script>
+
+
+</body>
+
+</html>
