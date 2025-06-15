@@ -163,12 +163,12 @@ body::before {
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   gap: 8px; /* ระยะห่างชื่อ, แท็ก, ปุ่ม contact */
-  margin-bottom: 30px; /* เว้นระยะห่างกับ swiper-pagination */
+  margin-bottom: 80px; /* เว้นระยะห่างกับ swiper-pagination */
   transition: transform 0.4s ease;
 }
 
 .card:hover {
-  transform: scale(1.15);
+  transform: scale(1);
 }
 
 .card img {
@@ -202,7 +202,7 @@ body::before {
 }
 
 .swiper-slide-active .card {
-  transform: scale(1.2); /* ลดจาก 1.4 */
+  transform: scale(1); /* ลดจาก 1.4 */
   transition: transform 0.4s ease;
   z-index: 10;
 }

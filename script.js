@@ -10,19 +10,14 @@ const swiper = new Swiper(".mySwiper", {
     stretch: 0,
     depth: 100,
     modifier: 1,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  on: {
-    slideChangeTransitionEnd: () => {
-      const audio = new Audio('mac-quack.mp3');
-      audio.play(); 
-    }
   }
 });
 
+
+
+
+
+// ตกแต่ง hexagon (ถ้าคุณใช้ background animation)
 for (let i = 0; i < 10; i++) {
   const hexagon = document.createElement('div');
   hexagon.classList.add('hexagon');
