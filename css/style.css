@@ -1,8 +1,9 @@
 html, body {
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  padding: 0;
 }
+
 
 body {
   font-family: 'Arial', sans-serif;
@@ -240,4 +241,12 @@ footer {
 .footer-link:hover {
   color: #d3f9d8;
 }
+.page-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
+.swiper {
+  flex: 1;
+}
