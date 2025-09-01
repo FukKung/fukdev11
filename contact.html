@@ -3,190 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ติดต่อเรา</title>
-  <link rel="stylesheet" href="css/contact.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+  <title>ติดต่อเรา - ทีมแมงเม่า</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            body: ['Sarabun', 'sans-serif']
+          },
+          colors: {
+            dark: '#111827',
+            card: 'rgba(30, 41, 59, 0.9)',
+            gray: {
+              800: '#1f2937',
+              850: '#1e293b',
+              900: '#111827'
+            }
+          },
+          boxShadow: {
+            'white-glow': '0 0 15px rgba(255, 255, 255, 0.1)',
+            'white-glow-hover': '0 0 25px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.15)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background-color: #0f172a;
+      background-image: 
+        radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.03), transparent 20%),
+        radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.03), transparent 20%);
+    }
+    .contact-card {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.08);
+    }
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 0 40px rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .social-icon {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+    }
+    .btn-back {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 bg-slate-900 text-gray-200">
 
-  <h2 class="heading">ทีมแมงเม่า</h2>
+  <div class="w-full max-w-md mx-auto bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 text-center border border-gray-700 contact-card">
+    <h1 class="text-3xl font-bold text-white">ช่องทางการติดต่อ</h1>
+    
+    <div id="memberName" class="text-xl text-gray-300 mt-2 font-medium"></div>
 
-  <div class="container">
-    <h1>ช่องทางการติดต่อ</h1>
-    <!-- ชื่อสมาชิกจะแสดงที่นี่โดย JS -->
-
-    <!-- contact cards -->
-    <div class="contact-list" id="contactList">
-      <!-- ใส่ข้อมูลแบบ dynamic ที่นี่ -->
+    <div class="contact-list mt-8 flex flex-col space-y-3" id="contactList">
     </div>
 
-    <!-- ปุ่มย้อนกลับ -->
-    <div class="center-bar">
-      <a href="index.html" class="back-button">ย้อนกลับ</a>
+    <div class="mt-10">
+      <a href="index.html" class="btn-back text-white font-semibold py-3 px-6 rounded-xl inline-block transition-all duration-300 shadow-md">
+        ย้อนกลับ
+      </a>
     </div>
   </div>
 
-  <footer>
-    <script>
-      const members = {
-        1: {
-          name: "FukKung HumNoi eiei",
-          instagram: "https://www.instagram.com/fuk.kung.56",
-          facebook: "https://www.facebook.com/fuk.kung.94",
-          github: "https://github.com/FukKung",
-          discord: null
-        },
-        2: {
-          name: "บังตี้กินส้มบักม่วง",
-          instagram: "https://www.instagram.com/wonra_wat/",
-          facebook: "https://www.facebook.com/bang.ti.983021",
-          github: null,
-          discord: null
-        },
-        3: {
-          name: "โตโต้ ศรัณยูหมูกระทะ",
-          instagram: "https://www.instagram.com/txtxpz_/",
-          facebook: "https://www.facebook.com/toto.sarunyu.9",
-          github: null,
-          discord: null
-        },
-        4: {
-          name: "ร็อคกี้ คนกลัวเมีย",
-          instagram: "https://www.instagram.com/_rawinan/",
-          facebook: "https://www.facebook.com/rawinan.phaprang.2024",
-          github: null,
-          discord: null
-        },
-        5: {
-          name: "ฟ.ฟิว หนุ่มหน้ามนคนหน้า....",
-          instagram: "https://www.instagram.com/fiw.ntc/",
-          facebook: "https://www.facebook.com/fiw.ntc",
-          github: null,
-          discord: null
-        },
-        6: {
-          name: "จารเบียร์คนเดิม เพิ่มเติมทีหลัง",
-          instagram: "https://www.instagram.com/b_exrzxi09/",
-          facebook: "https://www.facebook.com/phuriphat.khocthan",
-          github: null,
-          discord: null
-        },
-        7: {
-          name: "สิงห์เฟชรคนเดิมเหมือนเดิมนั่นแหละ",
-          instagram: "https://www.instagram.com/worapat_.24/",
-          facebook: "https://www.facebook.com/worapat.vi.run",
-          github: null,
-          discord: null
-        },
-        8: {
-          name: "จารทิวสุดหล่อ",
-          instagram: "https://www.instagram.com/thp.pk/",
-          facebook: "https://www.facebook.com/thanaphat.payakkakul/",
-          github: "https://github.com/Unpraised0",
-          discord: null
-        },
-        9: {
-          name: "จารเฟชร จักรยุไส",
-          instagram: "https://www.instagram.com/chakirch2549/",
-          facebook: "https://www.facebook.com/cakr.krich.115424",
-          github: null,
-          discord: null
-        },
-        10: {
-          name: "ต้นกล้า49",
-          instagram: "https://www.instagram.com/ton.kla_11/",
-          facebook: "https://www.facebook.com/paphawin.tonwong",
-          github: null,
-          discord: null
-        }
-      };
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const id = urlParams.get('id');
-      const contactList = document.getElementById("contactList");
-      const member = members[id];
-
-      const links = [
-        {
-          key: "instagram",
-          label: "Instagram",
-          icon: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
-        },
-        {
-          key: "facebook",
-          label: "Facebook",
-          icon: "https://cdn-icons-png.flaticon.com/512/733/733547.png"
-        },
-        {
-          key: "github",
-          label: "GitHub",
-          icon: "https://cdn-icons-png.flaticon.com/512/733/733553.png"
-        },
-        {
-          key: "discord",
-          label: "Discord",
-          icon: "https://cdn-icons-png.flaticon.com/512/5968/5968756.png"
-        }
-      ];
-
-      // แสดงชื่อสมาชิกใต้หัวข้อหลัก
-      if (member) {
-        const header = document.querySelector("h1");
-        const nameTag = document.createElement("h2");
-        nameTag.textContent = member.name;
-        nameTag.style.marginTop = "0.3em";
-        nameTag.style.fontWeight = "normal";
-        nameTag.style.color = "#333";
-        header.insertAdjacentElement("afterend", nameTag);
-      }
-
-      if (!member) {
-        contactList.innerHTML = "<p>ไม่พบสมาชิกในระบบ</p>";
-      } else {
-        links.forEach(link => {
-          const value = member[link.key];
-          let label = "ยังไม่เชื่อมต่อ";
-
-          if (value) {
-            try {
-              const urlObj = new URL(value);
-              label = urlObj.pathname.replace(/^\/+|\/+$/g, ''); // ตัด '/' หน้าและหลัง
-            } catch (e) {
-              label = value;
-            }
-          }
-
-          const href = value ? value : "#";
-          const extraAttr = value ? "" : `id="${link.key}Link"`;
-
-          contactList.innerHTML += `
-            <a href="${href}"  class="contact-card ${link.key}" ${extraAttr}>
-              <img src="${link.icon}" alt="${link.label}">
-              <span>${label}</span>
-            </a>
-          `;
-        });
-
-        // แสดง alert เมื่อคลิกลิงก์ที่ยังไม่เชื่อมต่อ
-        links.forEach(link => {
-          if (!member[link.key]) {
-            setTimeout(() => {
-              const el = document.getElementById(`${link.key}Link`);
-              if (el) {
-                el.addEventListener("click", function (e) {
-                  e.preventDefault();
-                  alert(`${link.label} ยังไม่ได้เชื่อมต่อ`);
-                });
-              }
-            }, 100);
-          }
-        });
-      }
-    </script>
-    <footer style="text-align: center; padding: 20px; font-size: 0.9rem; color: #888;">
-    © 2025 Mangmao Team | Mangmao Studio
+  <footer class="text-center p-5 text-gray-500 text-sm mt-8 border-t border-gray-800 w-full max-w-md">
+    © 2025 Mangmao Team | Mangmao Studio. All rights reserved.
   </footer>
 
+  <script>
+    const members = {
+      1: { name: "FukKung HumNoi eiei", instagram: "https://www.instagram.com/fuk.kung.56", facebook: "https://www.facebook.com/fuk.kung.94", github: "https://github.com/FukKung", discord: null },
+      2: { name: "บังตี้กินส้มบักม่วง", instagram: "https://www.instagram.com/wonra_wat/", facebook: "https://www.facebook.com/bang.ti.983021", github: null, discord: null },
+      3: { name: "โตโต้ ศรัณยูหมูกระทะ", instagram: "https://www.instagram.com/txtxpz_/", facebook: "https://www.facebook.com/toto.sarunyu.9", github: null, discord: null },
+      4: { name: "ร็อคกี้ คนกลัวเมีย", instagram: "https://www.instagram.com/_rawinan/", facebook: "https://www.facebook.com/rawinan.phaprang.2024", github: null, discord: null },
+      5: { name: "ฟ.ฟิว หนุ่มหน้ามนคนหน้า....", instagram: "https://www.instagram.com/fiw.ntc/", facebook: "https://www.facebook.com/fiw.ntc", github: null, discord: null },
+      6: { name: "จารเบียร์คนเดิม เพิ่มเติมทีหลัง", instagram: "https://www.instagram.com/b_exrzxi09/", facebook: "https://www.facebook.com/phuriphat.khocthan", github: null, discord: null },
+      7: { name: "สิงห์เฟชรคนเดิมเหมือนเดิมนั่นแหละ", instagram: "https://www.instagram.com/worapat_.24/", facebook: "https://www.facebook.com/worapat.vi.run", github: null, discord: null },
+      8: { name: "จารทิวสุดหล่อ", instagram: "https://www.instagram.com/thp.pk/", facebook: "https://www.facebook.com/thanaphat.payakkakul/", github: "https://github.com/Unpraised0", discord: null },
+      9: { name: "จารเฟชร จักรยุไส", instagram: "https://www.instagram.com/chakirch2549/", facebook: "https://www.facebook.com/cakr.krich.115424", github: null, discord: null },
+      10: { name: "ต้นกล้า49", instagram: "https://www.instagram.com/ton.kla_11/", facebook: "https://www.facebook.com/paphawin.tonwong", github: null, discord: null }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    const contactList = document.getElementById("contactList");
+    const memberNameEl = document.getElementById("memberName");
+    const member = members[id];
+
+    const links = [
+      { key: "instagram", label: "Instagram", icon: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png" },
+      { key: "facebook", label: "Facebook", icon: "https://cdn-icons-png.flaticon.com/512/733/733547.png" },
+      { key: "github", label: "GitHub", icon: "https://cdn-icons-png.flaticon.com/512/733/733553.png" },
+      { key: "discord", label: "Discord", icon: "https://cdn-icons-png.flaticon.com/512/5968/5968756.png" }
+    ];
+
+    if (member) {
+      memberNameEl.textContent = member.name;
+    } else {
+      contactList.innerHTML = `<p class="text-red-400 text-sm py-4">ไม่พบข้อมูลสมาชิก</p>`;
+    }
+
+    if (member) {
+      links.forEach(link => {
+        const value = member[link.key];
+        let label = "ยังไม่เชื่อมต่อ";
+
+        if (value) {
+          try {
+            const urlObj = new URL(value);
+            label = "@" + urlObj.pathname.replace(/^\/+|\/+$/g, '');
+          } catch (e) {
+            label = value;
+          }
+        }
+
+        const href = value ? value : "#";
+        const target = value ? `target="_blank" rel="noopener"` : "";
+        const extraAttr = value ? "" : `id="${link.key}Link"`;
+        const cursorClass = value ? "" : "cursor-not-allowed opacity-60";
+        const hoverClass = value ? "hover:bg-white/20" : "";
+
+        contactList.innerHTML += `
+          <a href="${href}" ${target} 
+             class="flex items-center p-3 bg-white/10 rounded-xl border border-white/10 transition-all duration-300 contact-card ${hoverClass} ${cursorClass}"
+             ${extraAttr}>
+            <img src="${link.icon}" alt="${link.label}" class="w-8 h-8 social-icon rounded-md">
+            <span class="ml-4 font-medium text-white">${label}</span>
+          </a>
+        `;
+      });
+
+      links.forEach(link => {
+        if (!member[link.key]) {
+          setTimeout(() => {
+            const el = document.getElementById(`${link.key}Link`);
+            if (el) {
+              el.addEventListener("click", function (e) {
+                e.preventDefault();
+                alert(`ขออภัยครับ ยังไม่ได้เชื่อมต่อ ${link.label} ของคุณนี้`);
+              });
+            }
+          }, 100);
+        }
+      });
+    }
+  </script>
 </body>
 </html>

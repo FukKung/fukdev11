@@ -2,123 +2,336 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="แนะนำทีมแมงเม่า พร้อมปุ่มติดต่อแต่ละคนในสไตล์สไลด์โชว์">
-  <title>Mangmao Team</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ทีมแมงเม่า พร้อมสไลด์โชว์" />
+  <title>Mangmao Team - Elite Squad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Bai+Jamjuree:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Chakra Petch', 'sans-serif'],
+            body: ['Bai Jamjuree', 'sans-serif']
+          },
+          colors: {
+            dark: '#111827',
+            card: 'rgba(30, 41, 59, 0.9)',
+            gray: {
+              800: '#1f2937',
+              850: '#1e293b',
+              900: '#111827'
+            }
+          },
+          boxShadow: {
+            'white-glow': '0 0 15px rgba(255, 255, 255, 0.2)',
+            'white-glow-hover': '0 0 25px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2)'
+          },
+          transitionProperty: {
+            'glow': 'box-shadow, transform'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Bai Jamjuree', 'Chakra Petch', sans-serif;
+      background-color: #0f172a;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05), transparent 25%);
+    }
+    .card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .swiper-slide-active .card {
+      transform: scale(1.04) translateY(-6px);
+      box-shadow:
+        0 20px 25px -5px rgba(0,0,0, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.15),
+        0 0 50px rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+    }
+    .pfp {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .swiper-slide-active .pfp {
+      filter: brightness(1.1) contrast(1.05);
+      border-color: #ffffff !important;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+    .swiper-pagination-bullet{
+        background: #9ca3af;
+        opacity: .4;
+    }
+    .swiper-pagination-bullet-active{
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(255,255,255,.5);
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col bg-slate-900 text-gray-200">
 
-  <div class="page-container">
-    <h2 class="heading">ทีมแมงเม่า</h2>
+  <header class="py-6 text-center space-y-2">
+    <h1 class="text-3xl md:text-4xl font-bold text-white font-display">
+      ทีมแมงเม่า
+    </h1>
+    <p class="text-gray-300">The Elite Squad</p>
 
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
+    <button id="autoBtn"
+      class="mt-3 px-4 py-2 rounded-lg font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 shadow-sm">
+      Auto Slide: ON
+    </button>
+  </header>
 
-        <!-- สมาชิกแต่ละคน -->
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/497147538_17999890958702571_8062217117536120364_n.jpg" alt="">
-            <h3>FUKKUNG<span></span></h3>
-            <p class="tags"><span>โสดครับ</span><span>เหงา</span></p>
-            <a class="contact-button" href="contact.html?id=1">Contact</a>
+  <main class="flex-1 flex items-center justify-center w-full px-4 py-6">
+    <div class="w-full max-w-6xl">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper py-8">
+
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/497147538_17999890958702571_8062217117536120364_n.jpg" alt="FUKKUNG"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">FUKKUNG</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">โสดครับ</span>
+                <span class="pill">เหงา</span>
+              </div>
+              <a href="contact.html?id=1"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/oo.png" alt="">
-            <h3>ทิวลิปคุง<span></span></h3>
-            <p class="tags"><span>ทองทิว</span><span>คนเดิม</span></p>
-            <a class="contact-button" href="contact.html?id=8">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/oo.png" alt="ทิวลิปคุง"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">ทิวลิปคุง</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">ทองทิว</span>
+                <span class="pill">คนเดิม</span>
+              </div>
+              <a href="contact.html?id=8"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/screenshot-1747023672346.png" alt="">
-            <h3>ต้นกล้า<span></span></h3>
-            <p class="tags"><span>สุดหล่อ</span><span>อิอิ</span></p>
-            <a class="contact-button" href="contact.html?id=10">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/screenshot-1747023672346.png" alt="ต้นกล้า"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">ต้นกล้า</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">สุดหล่อ</span>
+                <span class="pill">อิอิ</span>
+              </div>
+              <a href="contact.html?id=10"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/screenshot-1747023713376.png" alt="">
-            <h3>บังตี้<span></span></h3>
-            <p class="tags"><span>มีแฟนแล้ว</span><span>#อยากมีเพิ่ม</span></p>
-            <a class="contact-button" href="contact.html?id=2">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/screenshot-1747023713376.png" alt="บังตี้"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">บังตี้</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">มีแฟนแล้ว</span>
+                <span class="pill">#อยากมีเพิ่ม</span>
+              </div>
+              <a href="contact.html?id=2"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/34926_0.jpg" alt="">
-            <h3>โตโต้<span></span></h3>
-            <p class="tags"><span>ของน้อย</span><span>49</span></p>
-            <a class="contact-button" href="contact.html?id=3">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/34926_0.jpg" alt="โตโต้"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">โตโต้</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">ของน้อย</span>
+                <span class="pill">49</span>
+              </div>
+              <a href="contact.html?id=3"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/34929_0.jpg" alt="">
-            <h3>ร็อคกี้<span></span></h3>
-            <p class="tags"><span>ชอบร้องเพลง</span><span>แต่ร้องไม่ถูกคีย์</span></p>
-            <a class="contact-button" href="contact.html?id=4">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/34929_0.jpg" alt="ร็อคกี้"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">ร็อคกี้</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">ชอบร้องเพลง</span>
+                <span class="pill">แต่ร้องไม่ถูกคีย์</span>
+              </div>
+              <a href="contact.html?id=4"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/34928_0.jpg" alt="">
-            <h3>ฟิว<span></span></h3>
-            <p class="tags"><span>พ่อชื่อ1</span><span>แม่ชื่อ2</span></p>
-            <a class="contact-button" href="contact.html?id=5">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/34928_0.jpg" alt="ฟิว"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">ฟิว</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">พ่อชื่อ1</span>
+                <span class="pill">แม่ชื่อ2</span>
+              </div>
+              <a href="contact.html?id=5"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/34927_0.jpg" alt="">
-            <h3>เบียร์<span></span></h3>
-            <p class="tags"><span>วัยรุ่นดูไบ</span><span>แต่โสด</span></p>
-            <a class="contact-button" href="contact.html?id=6">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/34927_0.jpg" alt="เบียร์"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">เบียร์</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">วัยรุ่นดูไบ</span>
+                <span class="pill">แต่โสด</span>
+              </div>
+              <a href="contact.html?id=6"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/34925_0.jpg" alt="">
-            <h3>เฟรช<span></span></h3>
-            <p class="tags"><span>สเกลไหน</span><span>สเกลริตันครับ</span></p>
-            <a class="contact-button" href="contact.html?id=7">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/34925_0.jpg" alt="เฟรช"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">เฟรช</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">สเกลไหน</span>
+                <span class="pill">สเกลริตันครับ</span>
+              </div>
+              <a href="contact.html?id=7"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div class="swiper-slide">
-          <div class="card">
-            <img src="img/Screenshot 2025-05-12 203941.png" alt="">
-            <h3>เฟรช<span></span></h3>
-            <p class="tags"><span>บักจัก</span><span>จักหยัง</span></p>
-            <a class="contact-button" href="contact.html?id=9">Contact</a>
+          <div class="swiper-slide p-3">
+            <div class="card bg-gray-800/80 rounded-xl p-5 shadow-lg backdrop-blur-sm text-center">
+              <img src="img/Screenshot 2025-05-12 203941.png" alt="เฟรช"
+                   class="pfp w-32 h-32 object-cover rounded-full border-2 border-white/30 mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-white mb-2">เฟรช</h3>
+              <div class="flex justify-center gap-2 mb-4">
+                <span class="pill">บักจัก</span>
+                <span class="pill">จักหยัง</span>
+              </div>
+              <a href="contact.html?id=9"
+                 class="block py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors duration-300 text-center border border-white/10">
+                ติดต่อ
+              </a>
+            </div>
           </div>
-        </div>
 
+        </div>
+        <div class="swiper-pagination mt-6 relative"></div>
       </div>
-      <div class="swiper-pagination"></div>
     </div>
-    
-  </div>
+  </main>
+
+  <footer class="text-center py-5 text-gray-500 text-sm border-t border-gray-800 w-full">
+    © 2025 Mangmao Team | Mangmao Studio. All rights reserved.
+  </footer>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
-  
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      loop: true,
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+      },
+       breakpoints: {
+        320: { slidesPerView: 1.2, spaceBetween: 10 },
+        640: { slidesPerView: 2, spaceBetween: 20 },
+        1024: { slidesPerView: 3, spaceBetween: 30 },
+      }
+    });
+
+    const autoBtn = document.getElementById("autoBtn");
+    let autoOn = true;
+
+    function renderAutoBtn() {
+      autoBtn.textContent = `Auto Slide: ${autoOn ? "ON" : "OFF"}`;
+      autoBtn.classList.toggle("bg-white/10", autoOn);
+      autoBtn.classList.toggle("hover:bg-white/20", autoOn);
+      autoBtn.classList.toggle("bg-red-500/20", !autoOn);
+      autoBtn.classList.toggle("hover:bg-red-500/30", !autoOn);
+    }
+
+    autoBtn.addEventListener("click", () => {
+      autoOn = !autoOn;
+      if (autoOn) swiper.autoplay.start();
+      else swiper.autoplay.stop();
+      renderAutoBtn();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        if(swiper.autoplay.running) swiper.autoplay.stop();
+      } else {
+        if (autoOn) swiper.autoplay.start();
+      }
+    });
+
+    renderAutoBtn();
+  </script>
 </body>
 </html>
-
-
-
-
