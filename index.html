@@ -84,16 +84,26 @@
         opacity: 1;
         box-shadow: 0 0 8px rgba(255,255,255,.5);
     }
+    .swiper-container {
+        width: 100%;
+    }
+    #animated-title span {
+      display: inline-block;
+      animation: bounceUp 1.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+    }
+    @keyframes bounceUp {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-30px); }
+      50% { transform: translateY(0); }
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col bg-slate-900 text-gray-200">
 
   <header class="py-6 text-center space-y-2">
-    <h1 class="text-3xl md:text-4xl font-bold text-white font-display">
-      Mangmao Studio
+    <h1 id="animated-title" class="text-3xl md:text-4xl font-bold text-white font-display flex justify-center h-16 items-center">
     </h1>
     <p class="text-gray-300">Show case</p>
-
     <button id="autoBtn"
       class="mt-3 px-4 py-2 rounded-lg font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 shadow-sm">
       Auto Slide: ON
@@ -101,7 +111,7 @@
   </header>
 
   <main class="flex-1 flex items-center justify-center w-full px-4 py-6">
-    <div class="w-full max-w-6xl">
+    <div class="swiper-container">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper py-8">
 
@@ -330,6 +340,26 @@
         if (autoOn) swiper.autoplay.start();
       }
     });
+    
+    function runTextAnimation() {
+        const title = document.getElementById('animated-title');
+        const text = "Mangmao Studio";
+        if (!title) return;
+        
+        title.innerHTML = '';
+        text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.style.animationDelay = `${index * 0.15}s`;
+            title.appendChild(span);
+        });
+
+        const totalAnimationTime = (title.children.length * 0.15 + 1.5) * 1000;
+        
+        setTimeout(runTextAnimation, totalAnimationTime + 500);
+    }
+    
+    document.addEventListener('DOMContentLoaded', runTextAnimation);
 
     renderAutoBtn();
   </script>
